@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620011525) do
+ActiveRecord::Schema.define(version: 20140801034722) do
 
   create_table "activity", force: true do |t|
     t.string   "username"
@@ -24,12 +24,29 @@ ActiveRecord::Schema.define(version: 20140620011525) do
     t.datetime "updated_at"
   end
 
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.string   "day"
+    t.integer  "event_start"
+    t.integer  "event_end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "notification", force: true do |t|
     t.string   "username"
     t.string   "message"
     t.string   "beaconid"
     t.datetime "between_start"
     t.datetime "between_end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

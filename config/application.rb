@@ -10,11 +10,14 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 
-
-
 module StudentBeacon
   class Application < Rails::Application
 
+
+
+    CASClient::Frameworks::Rails::Filter.configure(
+        :cas_base_url => "https://cas.csp.uwa.edu.au"
+    )
 
     config.rubycas.cas_base_url = 'https://cas.csp.uwa.edu.au/'
     # Settings in config/environments/* take precedence over those specified here.
