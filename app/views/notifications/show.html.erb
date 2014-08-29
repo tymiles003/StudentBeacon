@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @notification.username %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @notification.message %>
+</p>
+
+<p>
+  <strong>Beaconid:</strong>
+  <%= @notification.beaconid %>
+</p>
+
+<p>
+  <strong>Between start:</strong>
+  <%= @notification.between_start %>
+</p>
+
+<p>
+  <strong>Between end:</strong>
+  <%= @notification.between_end %>
+</p>
+
+<%= link_to 'Edit', edit_notification_path(@notification) %> |
+<%= link_to 'Back', notifications_path %>

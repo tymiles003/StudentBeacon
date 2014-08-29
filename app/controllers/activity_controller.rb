@@ -19,7 +19,21 @@ class ActivityController < ApplicationController
     event_not_found = true
 
     if (params.has_key?(:event_code))
-      @event = Event.find_by_code(params[:event_code])
+
+      # check if is in the format of event::code::checkin_type
+
+      event_param = params[:event_code];
+      checkin_type = "unknown"
+      event_key = event_param
+
+
+      if (event_param.include? "::")
+        event_params = event_param.split("::")
+        event_key = event_params[1]
+        checkin_type = event_params[2]
+      end
+
+      @event = Event.find_by_code(event_key)
 
       if (!@event.nil?)
         event_not_found = false
@@ -35,7 +49,8 @@ class ActivityController < ApplicationController
     @activity = Activity.new(:username => params[:username],
                              :event_time => DateTime.current,
                              :event => "checkin",
-                             :beaconid => params[:event_code])
+                             :beaconid => event_param,
+                             :description => checkin_type)
 
 
     @activity.save
